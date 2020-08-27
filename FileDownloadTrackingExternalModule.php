@@ -38,7 +38,7 @@ class FileDownloadTrackingExternalModule extends AbstractExternalModule
                 </script>";
     }
 
-    function redcap_module_custom_field_configuration($project_id, $projectSettings){
+    function redcap_module_configuration_settings($project_id, $projectSettings){
         foreach ($projectSettings[0]['sub_settings'] as $index => $subsetting){
             if($subsetting['key'] == 'tracking-field'){
                 $sql = "SELECT field_name,element_label

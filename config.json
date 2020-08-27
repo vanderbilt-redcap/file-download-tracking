@@ -11,7 +11,7 @@
     }
   ],
 
-  "permissions": ["hook_every_page_top","redcap_module_custom_field_configuration"],
+  "permissions": ["hook_every_page_top","redcap_module_configuration_settings"],
 
   "enable-every-page-hooks-on-system-pages": true,
 
