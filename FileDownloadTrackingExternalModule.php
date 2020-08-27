@@ -14,10 +14,11 @@ class FileDownloadTrackingExternalModule extends AbstractExternalModule
     }
 
     function hook_every_page_top(){
-        $download_field = $this->getProjectSetting('download-field');
-        $tracking_field = $this->getProjectSetting('tracking-field');
-        $url = $this->getUrl('trackField.php');
-        echo "<script>
+        if ((array_key_exists('pid', $_REQUEST) && !empty($_REQUEST['pid'])) || $this->isSurveyPage()) {
+            $download_field = $this->getProjectSetting('download-field');
+            $tracking_field = $this->getProjectSetting('tracking-field');
+            $url = $this->getUrl('trackField.php');
+            echo "<script>
                 $(document).ready(function() {
                     var download_field = " . json_encode($download_field) . ";
                     var tracking_field = " . json_encode($tracking_field) . ";
@@ -36,6 +37,7 @@ class FileDownloadTrackingExternalModule extends AbstractExternalModule
                     
                 });
                 </script>";
+        }
     }
 
     function redcap_module_configuration_settings($project_id, $projectSettings){
